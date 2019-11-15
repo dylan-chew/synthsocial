@@ -56,6 +56,15 @@ class UserTableSeeder extends Seeder
         $postAdmin->save();
         $postAdmin->roles()->attach($role_post);
 
+        $userDefault = new User();
+        $userDefault->name = "James User";
+        $userDefault->email = "jamesuser@mail.com";
+        $userDefault->password = bcrypt('password');
+        $userDefault->created_at = Carbon::now()->toDateTimeString();
+        $userDefault->updated_at = Carbon::now()->toDateTimeString();
+        $userDefault->save();
+        $userDefault->roles()->attach($role_default);
+
 //        DB::table('users')->insert([
 //            'name' => 'Jon Smith',
 //            'email' => 'jon'.'@gmail.com',
