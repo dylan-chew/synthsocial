@@ -15,7 +15,7 @@ class PostsTableSeeder extends Seeder
             'title' => 'Roland Jupiter 8 Demo',
             'body' => 'A neat video showcasing some Jupiter sounds.',
             'youtube_url' => 'https://www.youtube.com/watch?v=5KV2O9bphM4',
-            'created_by' => null,
+            'created_by' => 2,
             'last_modified_by' => null,
             'deleted_by' => null
         ]);
@@ -24,7 +24,7 @@ class PostsTableSeeder extends Seeder
             'title' => 'Prophet 8 vs Rev2',
             'body' => 'Different patches from a Prophet Rev 2 being compared with a prophet 8.',
             'youtube_url' => 'https://www.youtube.com/watch?v=97lWx_NwdKE',
-            'created_by' => null,
+            'created_by' => 1,
             'last_modified_by' => null,
             'deleted_by' => null
         ]);
@@ -33,7 +33,7 @@ class PostsTableSeeder extends Seeder
             'title' => '808 Drum Beats',
             'body' => 'Some famous sounds from the Roland 808.',
             'youtube_url' => 'https://www.youtube.com/watch?v=YeZZk2czG1c',
-            'created_by' => null,
+            'created_by' => 1,
             'last_modified_by' => null,
             'deleted_by' => null
         ]);

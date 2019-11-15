@@ -16,7 +16,7 @@ class ThemesTableSeeder extends Seeder
             'cdn' => 'https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css',
             'description' => 'An ode to Metro',
             'is_default' => true,
-            'created_by' => null,
+            'created_by' => 3,
             'last_modified_by' => null,
             'deleted_by' => null
         ]);
@@ -26,7 +26,7 @@ class ThemesTableSeeder extends Seeder
             'cdn' => 'https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css',
             'description' => 'A fresh feel',
             'is_default' => false,
-            'created_by' => null,
+            'created_by' => 3,
             'last_modified_by' => null,
             'deleted_by' => null
         ]);
@@ -36,7 +36,7 @@ class ThemesTableSeeder extends Seeder
             'cdn' => 'https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sandstone/bootstrap.min.css',
             'description' => 'A touch of warmth',
             'is_default' => false,
-            'created_by' => null,
+            'created_by' => 3,
             'last_modified_by' => null,
             'deleted_by' => null
         ]);

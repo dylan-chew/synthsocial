@@ -81,4 +81,13 @@ class User extends Authenticatable
     {
         return null !== $this->roles()->where(‘name’, $role)->first();
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'created_by');
+    }
+
+    public function themes(){
+        return $this->hasMany(Theme::class, 'created_by');
+    }
 }
