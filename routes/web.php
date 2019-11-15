@@ -25,3 +25,13 @@ Route::get('/admin/users/{user}', 'AdminsUsersController@show'); //show 1 user
 Route::get('/admin/users/{user}/edit', 'AdminsUsersController@edit'); //edit a user
 Route::patch('/admin/users/{user}', 'AdminsUsersController@update'); //confirm and update with edit
 Route::delete('admin/users/{user}', 'AdminsUsersController@destroy'); //(soft) delete user
+
+//user theme routes
+Route::get('/admin/themes', 'AdminsThemesController@index'); //all themes
+Route::get('/admin/themes/{theme}', 'AdminsThemesController@show'); //show 1 theme
+Route::get('/admin/themes/{theme}/edit', 'AdminsThemesController@edit'); //edit a theme
+Route::patch('/admin/themes/{theme}', 'AdminsThemesController@update'); //confirm and update with edit
+Route::delete('admin/themes/{theme}', 'AdminsThemesController@destroy'); //delete theme
+
+//posts and main pages routes?
+

@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="title">Edit User</h1>
 
-    <form method="POST" action="/projects/{{$user->id}}" style="margin-bottom: 10px">
+    <form method="POST" action="/admin/users/{{$user->id}}" style="margin-bottom: 10px">
         @method('PATCH')
         @csrf
 
@@ -11,7 +11,7 @@
             <label class="label" for="title">Name</label>
 
             <div class="control">
-                <input type="text" class="input" name="title" placeholder="Title" value="{{$user->name}}">
+                <input type="text" class="input" name="name" value="{{$user->name}}">
             </div>
         </div>
 
@@ -19,19 +19,11 @@
             <label class="label" for="description">Email</label>
 
             <div class="control">
-                <textarea type="text" class="textarea" name="description">{{$user->email}}</textarea>
+                <input type="text" class="input" name="email" value="{{$user->email}}">
             </div>
         </div>
 
-        <div class="field">
-            <label class="label" for="description">Email</label>
-
-            <div class="control">
-                <textarea type="text" class="textarea" name="description">{{$user->email}}</textarea>
-            </div>
-        </div>
-
-        //Roles?
+        Edit roles here?
 
         <div class="field">
             <div class="control">
@@ -40,7 +32,7 @@
         </div>
     </form>
 
-{{--    @include ('errors')--}}
+    @include ('errors')
 
     <form method="post" action="/admin/users/{{$user->id}}">
         @method('DELETE')
