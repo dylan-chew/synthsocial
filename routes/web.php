@@ -18,14 +18,14 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
 //user admin routes
-Route::get('/admin/users', 'AdminsUsersController@index'); //all users
+Route::get('/admin/users', 'AdminsUsersController@index')->name('users'); //all users
 Route::get('/admin/users/{user}', 'AdminsUsersController@show'); //show 1 user
 Route::get('/admin/users/{user}/edit', 'AdminsUsersController@edit'); //edit a user
 Route::patch('/admin/users/{user}', 'AdminsUsersController@update'); //confirm and update with edit
 Route::delete('admin/users/{user}', 'AdminsUsersController@destroy'); //(soft) delete user
 
 //user theme routes
-Route::get('/admin/themes', 'AdminsThemesController@index'); //all themes
+Route::get('/admin/themes', 'AdminsThemesController@index')->name('themes'); //all themes
 Route::get('/admin/themes/create', 'AdminsThemesController@create');        //create new theme from form *needs to happen before show method
 Route::post('/admin/themes', 'AdminsThemesController@store');               //store the theme in DB
 Route::get('/admin/themes/{theme}', 'AdminsThemesController@show'); //show 1 theme
