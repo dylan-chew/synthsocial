@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminsThemesController extends Controller
 {
@@ -41,7 +42,9 @@ class AdminsThemesController extends Controller
 
     public function update(Theme $theme)
     {
-        $theme->update($this->validateTheme());
+        $attributes = $this->validateTheme();
+        $attributes['last_modified_by'] = Auth::user()->id;
+        $theme->update($attributes);
 
         return redirect('/admin/themes');
     }

@@ -19,6 +19,7 @@ Auth::routes();
 
 //user admin routes
 Route::get('/admin/users', 'AdminsUsersController@index')->name('users'); //all users
+Route::post('/admin/users/search', 'AdminsUsersController@search'); //search through users
 Route::get('/admin/users/{user}', 'AdminsUsersController@show'); //show 1 user
 Route::get('/admin/users/{user}/edit', 'AdminsUsersController@edit'); //edit a user
 Route::patch('/admin/users/{user}', 'AdminsUsersController@update'); //confirm and update with edit
@@ -35,3 +36,4 @@ Route::delete('admin/themes/{theme}', 'AdminsThemesController@destroy'); //delet
 
 //posts and main pages routes?
 Route::get('/', 'PostsController@index')->name('home');
+Route::get('posts/create', 'PostsController@create')->name('create.post');        //create new theme from form *needs to happen before show method

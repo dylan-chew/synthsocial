@@ -36,7 +36,7 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button is-link">Update User</button>
+                <button type="submit" class="button btn-warning is-link">Update User</button>
             </div>
         </div>
     </form>
@@ -49,8 +49,10 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button">Delete User</button>
+                <button type="submit" class="button btn-danger" {{$user->id === 2 ? 'disabled' : ''}} >Delete User</button>
             </div>
         </div>
     </form>
+
+    <a href="{{route('users')}}"><button class="btn btn-success">Go Back</button></a>
 @endsection

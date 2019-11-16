@@ -16,10 +16,29 @@ class AdminsUsersController extends Controller
         $this->middleware(['auth', 'useradmin']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $users = User::all();
-        return view('users.index', compact('users'));
+
+        if ($request->userFilter == 'showAll') {
+            $showall = true;
+        } else {
+            $showall = false;
+        }
+
+        return view('users.index', compact(['users', 'showall']));
+    }
+
+    public function search(Request $request)
+    {
+        $searchString = $request->searchString;
+        $users = User::where('name', 'LIKE', '%' . $searchString . '%')
+            ->orWhere('email', 'LIKE', '%' . $searchString . '%')
+            ->get();
+
+        $showall = true;
+
+        return view('users.index', compact(['users', 'showall']));
     }
 
     public function show(User $user)
@@ -73,7 +92,7 @@ class AdminsUsersController extends Controller
             $user->roles()->detach($role_post);
         }
         //give default user role back if nothing checked
-        if(!$userAdminRole && !$themeAdminRole && !$postAdminRole){
+        if (!$userAdminRole && !$themeAdminRole && !$postAdminRole) {
             $user->roles()->attach($role_default);
         }
 
