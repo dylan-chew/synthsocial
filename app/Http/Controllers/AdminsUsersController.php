@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminsUsersController extends Controller
 {
@@ -14,10 +15,8 @@ class AdminsUsersController extends Controller
         $this->middleware(['auth', 'useradmin']);
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $request->user()->authorizeRoles(['user admin']);
-
         $users = User::all();
         return view('users.index', compact('users'));
     }
@@ -30,19 +29,22 @@ class AdminsUsersController extends Controller
 
     public function edit(User $user)
     {
-        //dd($user);
         return view('users.edit', compact('user'));
     }
 
     public function update(User $user)
     {
-        $user->update($this->validateUser());
+        $attributes = $this->validateUser();
+        $attributes['last_modified_by'] = Auth::user()->id;
+
+        $user->update($attributes);
 
         return redirect('admin/users');
     }
 
     public function destroy(User $user)
     {
+        $user->update(['deleted_by' => Auth::user()->id]);
         $user->delete();
 
         return redirect('admin/users');
