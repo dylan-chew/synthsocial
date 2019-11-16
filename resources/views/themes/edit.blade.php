@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
     <h1 class="title">Edit Theme</h1>
@@ -27,7 +27,7 @@
             <label class="label" for="description">CDN</label>
 
             <div class="control">
-                <input type="text" class="input" name="description" value="{{$theme->cdn}}">
+                <input type="text" class="input" name="cdn" value="{{$theme->cdn}}">
             </div>
         </div>
 
@@ -40,13 +40,13 @@
 
     @include ('errors')
 
-    <form method="post" action="/admin/users/{{$theme->id}}">
+    <form method="post" action="/admin/themes/{{$theme->id}}">
         @method('DELETE')
         @csrf
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button">Delete User</button>
+                <button type="submit" class="button">Delete Theme</button>
             </div>
         </div>
     </form>

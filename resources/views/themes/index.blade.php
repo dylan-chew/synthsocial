@@ -1,9 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title></title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
 <h1>All Themes</h1>
 <ul>
     @foreach ($themes as $theme)
@@ -15,5 +12,6 @@
         </li>
     @endforeach
 </ul>
-</body>
-</html>
+
+<a href="/admin/themes/create">Add New Theme</a>
+@endsection

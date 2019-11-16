@@ -22,7 +22,7 @@ class UserTableSeeder extends Seeder
 
         $userDefault = new User();
         $userDefault->name = "Jon Smith";
-        $userDefault->email = "jonsmith@mail.com";
+        $userDefault->email = "user@mail.com";
         $userDefault->password = bcrypt('password');
         $userDefault->created_at = Carbon::now()->toDateTimeString();
         $userDefault->updated_at = Carbon::now()->toDateTimeString();
