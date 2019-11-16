@@ -70,7 +70,7 @@ class User extends Authenticatable
      */
     public function hasAnyRole($roles)
     {
-        return null !== $this->roles()->whereIn(‘name’, $roles)->first();
+        return null !== $this->roles()->whereIn('name', $roles)->first();
     }
 
     /**
@@ -79,7 +79,7 @@ class User extends Authenticatable
      */
     public function hasRole($role)
     {
-        return null !== $this->roles()->where(‘name’, $role)->first();
+        return null !== $this->roles()->where('name', $role)->first();
     }
 
     public function posts()
@@ -87,7 +87,13 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'created_by');
     }
 
-    public function themes(){
+    public function themes()
+    {
         return $this->hasMany(Theme::class, 'created_by');
+    }
+
+    public function isUserAdmin()
+    {
+        return $this->roles()->name === 'user admin';
     }
 }

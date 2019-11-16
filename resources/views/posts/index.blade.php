@@ -3,6 +3,9 @@
 @section ('content')
 
     <div class="container">
+
+        @include('flash-message')
+
         <h1>All Posts</h1>
         <div class="row">
             @foreach($posts as $post)

@@ -34,4 +34,4 @@ Route::patch('/admin/themes/{theme}', 'AdminsThemesController@update'); //confir
 Route::delete('admin/themes/{theme}', 'AdminsThemesController@destroy'); //delete theme
 
 //posts and main pages routes?
-Route::get('/', 'PostsController@index');
+Route::get('/', 'PostsController@index')->name('home');
