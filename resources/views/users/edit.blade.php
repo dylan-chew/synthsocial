@@ -23,7 +23,16 @@
             </div>
         </div>
 
-        Edit roles here?
+        <div>
+            <h3>Roles</h3>
+            <input type="checkbox" name="userAdmin" {{$user->hasRole('user admin') ? 'checked' : ''}}>
+            <label for="userAdmin">User Admin</label><br/>
+            <input type="checkbox" name="themeAdmin" {{$user->hasRole('theme admin') ? 'checked' : ''}}>
+            <label for="userAdmin">Theme Admin</label><br/>
+            <input type="checkbox" name="postAdmin" {{$user->hasRole('post admin') ? 'checked' : ''}}>
+            <label for="userAdmin">Post Admin</label><br/>
+        </div>
+
 
         <div class="field">
             <div class="control">
