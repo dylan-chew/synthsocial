@@ -93,11 +93,14 @@ class AdminsUsersController extends Controller
         }
         //give default user role back if nothing checked
         if (!$userAdminRole && !$themeAdminRole && !$postAdminRole) {
-            if ($user->id == 2) {
-                $user->roles()->attach($role_user);
-            } else{
+            if ($user->id !== 2) {
                 $user->roles()->attach($role_default);
             }
+        }
+
+        //reattach user admin role for root user
+        if ($user->id === 2) {
+            $user->roles()->attach($role_user);
         }
 
         $user->update($attributes);

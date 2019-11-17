@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{--    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css" rel="stylesheet">--}}
+    <link href="{{$defaultTheme->cdn}}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
