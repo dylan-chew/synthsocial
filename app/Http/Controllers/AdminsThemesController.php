@@ -12,6 +12,7 @@ class AdminsThemesController extends Controller
     public function index()
     {
         $themes = Theme::all();
+
         return view('themes.index', compact('themes'));
     }
 
@@ -29,6 +30,7 @@ class AdminsThemesController extends Controller
     {
         //validation
         $attributes = $this->validateTheme();
+        $attributes['created_by'] = Auth::user()->id;
 
         $theme = Theme::create($attributes);
 

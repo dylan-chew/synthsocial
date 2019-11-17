@@ -8,7 +8,8 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Created</th>
+            <th>Created At</th>
+            <th>Created By</th>
             <th>Is Default</th>
             <th>Edit</th>
         </tr>
@@ -19,6 +20,7 @@
                 <td >{{$theme->name}}</td>
                 <td>{{$theme->description}}</td>
                 <td>{{$theme->created_at}}</td>
+                <td>{{$theme->createdBy->email}}</td>
                 <td>{{$theme->is_default ? 'Yes' : 'No'}}</td>
                 <td>
                     <a href="/admin/themes/{{$theme->id}}/edit">
