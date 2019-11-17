@@ -32,6 +32,7 @@ Route::post('/admin/themes', 'AdminsThemesController@store');               //st
 Route::get('/admin/themes/{theme}', 'AdminsThemesController@show'); //show 1 theme
 Route::get('/admin/themes/{theme}/edit', 'AdminsThemesController@edit'); //edit a theme
 Route::patch('/admin/themes/{theme}', 'AdminsThemesController@update'); //confirm and update with edit
+Route::post('/admin/themes/{theme}', 'AdminsThemesController@setDefault'); //to handle making default theme
 Route::delete('admin/themes/{theme}', 'AdminsThemesController@destroy'); //delete theme
 
 //posts and main pages routes?

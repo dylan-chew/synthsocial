@@ -56,6 +56,18 @@ class AdminsThemesController extends Controller
         return redirect('/admin/themes');
     }
 
+    public function setDefault(Theme $theme)
+    {
+        $currentDefault = Theme::where('is_default', 1)->first();
+        $attributes['is_default'] = 0;
+        //dd($currentDefault);
+        $currentDefault->update($attributes);
+        $attributes['is_default'] = 1;
+        $theme->update($attributes);
+
+        return redirect('/admin/themes');
+    }
+
 
     public function validateTheme()
     {

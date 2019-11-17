@@ -12,7 +12,7 @@ class Theme extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'cdn', 'last_modified_by', 'deleted_by',
+        'name', 'description', 'cdn', 'last_modified_by', 'deleted_by', 'is_default',
     ];
 
 

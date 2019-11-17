@@ -9,6 +9,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Created</th>
+            <th>Is Default</th>
             <th>Edit</th>
         </tr>
         </thead>
@@ -18,6 +19,7 @@
                 <td >{{$theme->name}}</td>
                 <td>{{$theme->description}}</td>
                 <td>{{$theme->created_at}}</td>
+                <td>{{$theme->is_default ? 'Yes' : 'No'}}</td>
                 <td>
                     <a href="/admin/themes/{{$theme->id}}/edit">
                         <button class="btn btn-info">Edit</button>

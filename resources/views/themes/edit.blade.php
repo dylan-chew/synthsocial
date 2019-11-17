@@ -42,6 +42,17 @@
         @include ('errors')
 
         <form method="post" action="/admin/themes/{{$theme->id}}">
+            @csrf
+
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="btn btn-primary" {{$theme->is_default ? 'disabled' : ''}}>Make Default
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <form method="post" action="/admin/themes/{{$theme->id}}">
             @method('DELETE')
             @csrf
 
