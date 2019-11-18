@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminsThemesController extends Controller
 {
+    public function __construct()
+    {
+        //use built in auth middleware to see if user is even logged in first.
+        //then check if they have the right privileges
+        $this->middleware(['auth', 'themeadmin']);
+    }
+
     public function index()
     {
         $themes = Theme::all();
