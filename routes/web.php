@@ -12,7 +12,6 @@
 */
 
 
-
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -37,7 +36,12 @@ Route::delete('admin/themes/{theme}', 'AdminsThemesController@destroy'); //delet
 
 //posts and main pages routes?
 Route::get('/', 'PostsController@index')->name('home');
-Route::get('posts/create', 'PostsController@create')->name('create.post');        //create new theme from form *needs to happen before show method
+Route::get('/posts/', function (){
+    return redirect('/');
+});
+Route::get('posts/create', 'PostsController@create')->name('create.post')->middleware('auth');
+Route::post('/posts/', 'PostsController@store');               //store the post in DB
+
 
 //Handle user setting theme, setting cookie
 Route::post('/set-theme', 'UsersThemesController@set')->name('set.theme');
