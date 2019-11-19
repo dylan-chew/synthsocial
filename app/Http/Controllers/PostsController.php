@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
 
     public function index()
     {
-        $posts = Post::all();
+//        $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
+
+        $posts = Post::orderBy('created_at', 'DESC')->get();
         return view('posts.index', compact('posts'));
     }
 
