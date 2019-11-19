@@ -17,6 +17,9 @@ class ViewServiceProvider extends ServiceProvider
     {
         $defaultTheme = Theme::where('is_default', 1)->first();
         view()->share('defaultTheme', $defaultTheme);
+
+        $allThemes = Theme::all();
+        view()->share('allThemes', $allThemes);
     }
 
     /**

@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-{{--    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css" rel="stylesheet">--}}
+    {{--    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css" rel="stylesheet">--}}
     <link href="{{$defaultTheme->cdn}}" rel="stylesheet">
 </head>
 <body>
@@ -41,6 +41,22 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Change Theme <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <form id="theme-form" action="{{ route('set.theme') }}" method="POST">
+                                @csrf
+                                @foreach ($allThemes as $key=>$themeOption)
+                                    <button type="submit" class="dropdown-item" name="themeId" value="{{$themeOption->id}}">{{$themeOption->name}}</button>
+                                @endforeach
+                            </form>
+                        </div>
+                    </li>
+                </ul>
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest

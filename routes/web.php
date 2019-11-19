@@ -38,3 +38,6 @@ Route::delete('admin/themes/{theme}', 'AdminsThemesController@destroy'); //delet
 //posts and main pages routes?
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('posts/create', 'PostsController@create')->name('create.post');        //create new theme from form *needs to happen before show method
+
+//Handle user setting theme, setting cookie
+Route::post('/set-theme', 'UsersThemesController@set')->name('set.theme');
