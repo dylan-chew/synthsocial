@@ -10,6 +10,8 @@ class UsersThemesController extends Controller
     public function set(Request $request){
         $themeToSet = Theme::find($request->input('themeId'));
 
-        return redirect()->back()->withCookie(cookie('userTheme', $themeToSet));
+        return redirect()->back()
+            ->withCookie(cookie('userTheme', $themeToSet->cdn))
+            ->withCookie(cookie('userThemeName', $themeToSet->name));
     }
 }

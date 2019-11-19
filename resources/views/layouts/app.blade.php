@@ -18,8 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{--    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css" rel="stylesheet">--}}
-    <link href="{{$defaultTheme->cdn}}" rel="stylesheet">
+    @if(request()->cookie('userTheme'))
+        <link href="{{request()->cookie('userTheme')}}" rel="stylesheet">
+    @else
+        <link href="{{$defaultTheme->cdn}}" rel="stylesheet">
+    @endif
+    <link href="{{ asset('css/extraStyles.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -51,7 +55,10 @@
                             <form id="theme-form" action="{{ route('set.theme') }}" method="POST">
                                 @csrf
                                 @foreach ($allThemes as $key=>$themeOption)
-                                    <button type="submit" class="dropdown-item" name="themeId" value="{{$themeOption->id}}">{{$themeOption->name}}</button>
+                                    <button type="submit"
+                                            class="dropdown-item {{($themeOption->name == request()->cookie('userThemeName')? 'selectedThemeDropdown' : '')}}"
+                                            name="themeId"
+                                            value="{{$themeOption->id}}">{{($themeOption->name == request()->cookie('userThemeName')? '◉' : '')}}{{$themeOption->name}}</button>
                                 @endforeach
                             </form>
                         </div>
