@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
-            $table->string('youtube_url');
+            $table->string('youtube_id');
             $table->unsignedInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->unsignedInteger('last_modified_by')->nullable();

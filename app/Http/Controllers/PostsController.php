@@ -23,6 +23,7 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
+
     public function store()
     {
         //validation
@@ -34,13 +35,20 @@ class PostsController extends Controller
         return redirect('/');
     }
 
+    public function destroy(Post $post)
+    {
+        $post->update(['deleted_by' => Auth::user()->id]);
+        $post->delete();
+        return redirect('/');
+    }
+
 
     public function validatePost()
     {
         return request()->validate([
             'title' => ['required', 'min:3'],
             'body' => ['required', 'min:3'],
-            'youtube_url' => ['required', 'min:3', 'url'],
+            'youtube_id' => ['required', 'min:3', ],
         ]);
     }
 }

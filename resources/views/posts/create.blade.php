@@ -17,8 +17,8 @@
             </div>
 
             <div>
-                <input class="input form-control {{$errors->has('cdn') ? 'is-danger' : ''}}" name="youtube_url" placeholder="YouTube embed URL"
-                       value="{{old('youtube_url')}}">
+                <input class="input form-control {{$errors->has('cdn') ? 'is-danger' : ''}}" name="youtube_id" placeholder="YouTube ID"
+                       value="{{old('youtube_id')}}">
             </div>
 
             <div>
