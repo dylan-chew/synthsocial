@@ -1709,7 +1709,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     //lets get all of the posts that the current user liked so we can display if its a fav or not
-    axios.get('api/favorite', {
+    axios.get('/api/favorite', {
       params: {
         curUserId: this.$props.curuserid
       }
@@ -1726,7 +1726,7 @@ __webpack_require__.r(__webpack_exports__);
     interactLike: function interactLike(event) {
       if (this.favorited == false) {
         this.favorited = true;
-        axios.get('api/favorite/add', {
+        axios.get('/api/favorite/add', {
           params: {
             curUserId: this.$props.curuserid,
             postId: this.$props.postid
@@ -1736,7 +1736,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       } else {
         this.favorited = false;
-        axios.get('api/favorite/remove', {
+        axios.get('/api/favorite/remove', {
           params: {
             curUserId: this.$props.curuserid,
             postId: this.$props.postid
@@ -6215,7 +6215,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.fa-heart {\n    color: red;\n}\n", ""]);
+exports.push([module.i, "\n.fa-heart {\n    color: red;\n}\ni {\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 

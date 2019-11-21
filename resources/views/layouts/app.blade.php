@@ -90,6 +90,7 @@
                                     Themes</a> @endif
                                 <a class="dropdown-item" href="{{route('create.post')}}">Create Post</a>
 
+                                <a class="dropdown-item" href="{{route('favorites')}}">Favorites</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

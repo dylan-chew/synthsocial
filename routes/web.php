@@ -40,6 +40,7 @@ Route::get('/posts/', function (){
     return redirect('/');
 });
 Route::get('posts/create', 'PostsController@create')->name('create.post')->middleware('auth');
+Route::get('posts/favorites', 'PostsController@showFavorites')->name('favorites');            //Handle user favorite posts
 Route::post('/posts/', 'PostsController@store');                           //store the post in DB
 Route::delete('/posts/delete/{post}', 'PostsController@destroy');          //delete the post
 

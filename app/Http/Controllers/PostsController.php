@@ -12,8 +12,6 @@ class PostsController extends Controller
 
     public function index()
     {
-//        $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
-
         $posts = Post::orderBy('created_at', 'DESC')->get();
         return view('posts.index', compact('posts'));
     }
@@ -42,13 +40,28 @@ class PostsController extends Controller
         return redirect('/');
     }
 
+    public function showFavorites()
+    {
+        $curUser = Auth::user();
+        $userPostLikes = $curUser->post_likes()->get();
+        $favPosts = array();
+
+        foreach ($userPostLikes as $userPostLike) {
+            $postId = $userPostLike->post_id;
+            $favPost = Post::find($postId);
+            $favPosts[] = $favPost;
+        }
+
+        return view('posts.favorites', compact('favPosts'));
+    }
+
 
     public function validatePost()
     {
         return request()->validate([
             'title' => ['required', 'min:3'],
             'body' => ['required', 'min:3'],
-            'youtube_id' => ['required', 'min:3', ],
+            'youtube_id' => ['required', 'min:3',],
         ]);
     }
 }

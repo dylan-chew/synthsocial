@@ -9,7 +9,7 @@
     export default {
         mounted() {
             //lets get all of the posts that the current user liked so we can display if its a fav or not
-            axios.get('api/favorite', {
+            axios.get('/api/favorite', {
                 params: {
                     curUserId: this.$props.curuserid
                 }
@@ -27,7 +27,7 @@
             interactLike: function (event) {
                 if (this.favorited == false) {
                     this.favorited = true;
-                    axios.get('api/favorite/add', {
+                    axios.get('/api/favorite/add', {
                         params: {
                             curUserId: this.$props.curuserid,
                             postId: this.$props.postid
@@ -38,7 +38,7 @@
                         })
                 } else {
                     this.favorited = false;
-                    axios.get('api/favorite/remove', {
+                    axios.get('/api/favorite/remove', {
                         params: {
                             curUserId: this.$props.curuserid,
                             postId: this.$props.postid
@@ -70,5 +70,9 @@
 <style>
     .fa-heart {
         color: red;
+    }
+
+    i {
+        cursor: pointer;
     }
 </style>
