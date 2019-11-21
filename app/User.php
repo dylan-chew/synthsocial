@@ -96,4 +96,8 @@ class User extends Authenticatable
     {
         return $this->roles()->name === 'user admin';
     }
+
+    public function post_likes(){
+        return $this->hasMany(PostLike::class, 'user_id');
+    }
 }

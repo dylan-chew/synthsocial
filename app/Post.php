@@ -24,4 +24,8 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function post_likes(){
+        return $this->hasMany(PostLike::class, 'post_id');
+    }
 }

@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ThemesTableSeeder::class);
         $this->call(PostsTableSeeder::class);
+        $this->call(PostLikesTableSeeder::class);
     }
 }
