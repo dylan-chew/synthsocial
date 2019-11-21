@@ -30,23 +30,39 @@ class FavoritePostsController extends Controller
         $attributes['post_id'] = $postId;
 
         //save to database
-//        $post_like = PostLike::create($attributes);
-//        DB::table('like_post')->insert([
-//            'post_id' => $postId,
-//            'user_id' => $curUserId,
-//        ]);
+        $querySuccess = DB::table('like_post')->insert([
+            'post_id' => $postId,
+            'user_id' => $curUserId,
+        ]);
 
-//        if ($post_like) {
-//            return response()->json(['success' => 'success'], 200);
-//        } else {
-//            response()->json(['error' => 'invalid'], 401);
-//        }
-
-
+        if ($querySuccess) {
+            return response()->json(['success' => 'success'], 200);
+        } else {
+            response()->json(['error' => 'invalid'], 401);
+        }
     }
 
     public function remove(Request $request)
     {
+        $curUserId = $request->curUserId;   //grab the current user ID from the request and save it
+        $postId = $request->postId;         //grab the post id from the params
 
+        //add variables to attributes array
+        $attributes['user_id'] = $curUserId;
+        $attributes['post_id'] = $postId;
+
+        //delete from database
+        $querySuccess = DB::table('like_post')
+            ->where([
+                ['user_id', $curUserId],
+                ['post_id', $postId],
+            ])
+            ->delete();
+
+        if ($querySuccess) {
+            return response()->json(['success' => 'success'], 200);
+        } else {
+            response()->json(['error' => 'invalid'], 401);
+        }
     }
 }

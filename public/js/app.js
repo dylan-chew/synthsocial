@@ -1735,13 +1735,15 @@ __webpack_require__.r(__webpack_exports__);
           console.log(response.data);
         });
       } else {
+        this.favorited = false;
         axios.get('api/favorite/remove', {
           params: {
             curUserId: this.$props.curuserid,
             postId: this.$props.postid
           }
+        }).then(function (response) {
+          console.log(response.data);
         });
-        this.favorited = false;
       }
     }
   },

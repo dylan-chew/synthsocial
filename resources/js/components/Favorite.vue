@@ -37,13 +37,16 @@
                             console.log(response.data)
                         })
                 } else {
+                    this.favorited = false;
                     axios.get('api/favorite/remove', {
                         params: {
                             curUserId: this.$props.curuserid,
                             postId: this.$props.postid
                         }
                     })
-                    this.favorited = false;
+                        .then(response => {
+                            console.log(response.data)
+                        })
                 }
 
             }
