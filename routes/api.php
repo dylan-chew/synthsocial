@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('favorite', 'FavoritePostsController@index');
+Route::get('favorite/add', 'FavoritePostsController@add');
+Route::get('favorite/remove', 'FavoritePostsController@remove');

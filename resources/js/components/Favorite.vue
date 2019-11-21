@@ -1,29 +1,48 @@
 <template>
     <div>
-        <i @click="testFunction" :class="[favorited ? 'fas fa-heart' : 'far fa-heart']" v-text="test"></i>
-        <p>{{curuser}}</p>
+        <i v-bind:id="'post'+postid" @click="interactLike" :class="[favorited ? 'fas fa-heart' : 'far fa-heart']"
+           v-text="test"></i>
     </div>
 </template>
 
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
-
+            //lets get all of the posts that the current user liked so we can display if its a fav or not
             axios.get('api/favorite', {
                 params: {
-                    curUser: this.$props.curuser
+                    curUserId: this.$props.curuserid
                 }
             })
                 .then(response => {
-                    console.log(response);
+                    const likedPosts = response.data
+                    likedPosts.forEach(post => {
+                        if (post.post_id == this.$props.postid) {
+                            this.favorited = true;
+                        }
+                    })
                 })
         },
         methods: {
-            testFunction: function (event) {
-                if(this.favorited == false) {
+            interactLike: function (event) {
+                if (this.favorited == false) {
                     this.favorited = true;
+                    axios.get('api/favorite/add', {
+                        params: {
+                            curUserId: this.$props.curuserid,
+                            postId: this.$props.postid
+                        }
+                    })
+                        .then(response => {
+                            console.log(response.data)
+                        })
                 } else {
+                    axios.get('api/favorite/remove', {
+                        params: {
+                            curUserId: this.$props.curuserid,
+                            postId: this.$props.postid
+                        }
+                    })
                     this.favorited = false;
                 }
 
@@ -31,7 +50,7 @@
         },
 
 
-        data: function (){
+        data: function () {
             return {
                 test: null,
                 favorited: false,
@@ -39,13 +58,14 @@
         },
 
         props: [
-            'curuser',
+            'curuserid',
+            'postid',
         ]
     }
 </script>
 
 <style>
-    .fa-heart{
+    .fa-heart {
         color: red;
     }
 </style>

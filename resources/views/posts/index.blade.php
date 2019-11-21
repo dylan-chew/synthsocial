@@ -12,7 +12,7 @@
                 <div class="card col-6">
                     <div class="card-body">
                         @if (!Auth::guest())
-                            <favorite curuser="{{Auth::id()}}"></favorite>
+                            <favorite postid="{{$post->id}}" curuserid="{{Auth::id()}}"></favorite>
                         @endif
                         <h4 class="card-title">{{$post->title}}</h4>
                         <div class="embed-responsive embed-responsive-16by9">

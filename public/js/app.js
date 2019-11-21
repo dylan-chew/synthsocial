@@ -1706,20 +1706,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    var _this = this;
+
+    //lets get all of the posts that the current user liked so we can display if its a fav or not
     axios.get('api/favorite', {
       params: {
-        curUser: this.$props.curuser
+        curUserId: this.$props.curuserid
       }
     }).then(function (response) {
-      console.log(response);
+      var likedPosts = response.data;
+      likedPosts.forEach(function (post) {
+        if (post.post_id == _this.$props.postid) {
+          _this.favorited = true;
+        }
+      });
     });
   },
   methods: {
-    testFunction: function testFunction(event) {
+    interactLike: function interactLike(event) {
       if (this.favorited == false) {
         this.favorited = true;
+        axios.get('api/favorite/add', {
+          params: {
+            curUserId: this.$props.curuserid,
+            postId: this.$props.postid
+          }
+        }).then(function (response) {
+          console.log(response.data);
+        });
       } else {
+        axios.get('api/favorite/remove', {
+          params: {
+            curUserId: this.$props.curuserid,
+            postId: this.$props.postid
+          }
+        });
         this.favorited = false;
       }
     }
@@ -1730,7 +1751,7 @@ __webpack_require__.r(__webpack_exports__);
       favorited: false
     };
   },
-  props: ['curuser']
+  props: ['curuserid', 'postid']
 });
 
 /***/ }),
@@ -6192,7 +6213,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.fa-heart{\n    color: red;\n}\n", ""]);
+exports.push([module.i, "\n.fa-heart {\n    color: red;\n}\n", ""]);
 
 // exports
 
@@ -37689,11 +37710,10 @@ var render = function() {
   return _c("div", [
     _c("i", {
       class: [_vm.favorited ? "fas fa-heart" : "far fa-heart"],
+      attrs: { id: "post" + _vm.postid },
       domProps: { textContent: _vm._s(_vm.test) },
-      on: { click: _vm.testFunction }
-    }),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.curuser))])
+      on: { click: _vm.interactLike }
+    })
   ])
 }
 var staticRenderFns = []

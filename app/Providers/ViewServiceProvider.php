@@ -17,6 +17,8 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //If running into error when Migrating comment out these two blocks.
+
         //send the default theme as variable to views
         $defaultTheme = Theme::where('is_default', 1)->first();
         view()->share('defaultTheme', $defaultTheme);
