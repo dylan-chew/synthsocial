@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\PostLike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,7 +37,17 @@ class PostsController extends Controller
     public function destroy(Post $post)
     {
         $post->update(['deleted_by' => Auth::user()->id]);
+
+        //delete the user/post like relationship from database
+        DB::table('like_post')
+            ->where([
+                ['user_id', Auth::user()->id],
+                ['post_id', $post->id],
+            ])
+            ->delete();
+
         $post->delete();
+
         return redirect('/');
     }
 
